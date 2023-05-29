@@ -9,14 +9,33 @@ export function Canvas({width, height, color, size, eventEmitter}): JSX.Element 
     let lastPosition: Point;
 
     useEffect(() => {
+        const canvas = canvasRef.current;
+
+        const resizeCanvas: Function = () => {
+            const screenWidth = window.innerWidth;
+            const maxWidth = 640;
+
+            if (screenWidth < maxWidth) {
+                canvas.width = screenWidth;
+                canvas.height = screenWidth / (4 / 3);
+            } else {
+                canvas.width = width;
+                canvas.height = height;
+            }
+        };
+
         const clearCanvasListener: Function = () => {
-            canvasRenderer.canvas = canvasRef.current;
+            canvasRenderer.canvas = canvas;
             canvasRenderer.clear();
         };
 
+        resizeCanvas();
+
+        window.addEventListener('resize', resizeCanvas);
         eventEmitter.on("clearCanvas", clearCanvasListener);
 
         return () => {
+            window.removeEventListener('resize', resizeCanvas);
             eventEmitter.off("clearCanvas", clearCanvasListener);
         };
     }, [eventEmitter, canvasRenderer]);
