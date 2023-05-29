@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Finger+Paint&family=Montserrat&family=Raleway&display=swap');
+
+/* Variables CSS */
+:root {
+    --primary-color: #3f51b5;
+    --secondary-color: #ffffff;
+    --background-color: #FFDAB9;
+    --font-color: #000000;
+    --hover-primary-color: #2c3e8e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Reset CSS */
+body, html, ul, div, h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6em;
+    font-family: 'Finger Paint', cursive;
+    background-color: var(--background-color);
+    min-height: 100vh;
+}
+
+/* Utils */
+.list-no-style {
+    list-style-type: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.grow-1 {
+    flex-grow: 1;
+}
+
+.flex.row {
+    flex-direction: row;
+}
+
+.flex.column {
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.justify-content-start {
+    justify-content: start;
+}
+
+.justify-content-stretch {
+    justify-content: stretch;
+}
+
+.justify-content-evenly {
+    justify-content: space-evenly;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.justify-content-end {
+    justify-content: end;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.align-items-stretch {
+    align-items: stretch;
+}
+
+.align-self-stretch {
+    align-self: stretch;
+}
+
+.mt-1 {
+    margin-top: 0.5em;
+}
+
+.mt-2 {
+    margin-top: 1em;
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
+.mb-1 {
+    margin-bottom: 0.5em;
+}
+
+.mb-2 {
+    margin-bottom: 1em;
+}
+
+.mx-1 {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.mx-2 {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.my-1 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.my-2 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.my-3 {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.my-4 {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.mxy-1 {
+    margin: 0.5em;
+}
+
+.pxy-1 {
+    padding: 0.5em;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.button {
+    border: none;
+    border-radius: 1.5em;
+    padding: 0.5em 1em;
+    box-shadow: 0 0.2em 0.25em rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button.button-primary:hover {
+    background-color: var(--hover-primary-color);
+}
+
+.button.button-primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+a.button {
+    text-decoration: none;
+}
+
+.panel {
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.3);
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Thème */
+h1 {
+    font-size: 4em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+button, input {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+}
+
+input[type="text"] {
+    border: none;
+    border-radius: 1.25em;
+    padding: 0.5em 0.75em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+}
+
+/* Styles de la barre de navigation */
+.navbar {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.navbar-logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 0.5em;
+}
+
+.navbar a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.intro-text {
+    max-width: 50%;
+}
+
+.canvas {
+    cursor: crosshair;
+}
+
+.color-sample {
+    display: inline-block;
+    width: 1.8em;
+    height: 1.8em;
+    border: none;
+    margin-right: 0.3em;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.black-color {
+    background-color: black;
+}
+
+.red-color {
+    background-color: firebrick;
+}
+
+.orange-color {
+    background-color: darkorange;
+}
+
+.yellow-color {
+    background-color: gold;
+}
+
+.green-color {
+    background-color: limegreen;
+}
+
+.blue-color {
+    background-color: dodgerblue;
+}
+
+.purple-color {
+    background-color: mediumorchid;
+}
+
+/* Styles du chat */
+.chat-container {
+    overflow-y: auto;
+    max-height: 30em;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    overflow-y: auto;
+    max-height: 80%;
+    height: 100%;
+}
+
+.chat-message {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 80%;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.4em;
+}
+
+.avatar {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    margin-right: 0.5em;
+}
