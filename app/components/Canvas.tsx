@@ -17,7 +17,7 @@ export function Canvas({width, height, color, size, eventEmitter}): JSX.Element 
 
             if (screenWidth < maxWidth) {
                 canvas.width = screenWidth;
-                canvas.height = screenWidth / (4 / 3);
+                canvas.height = screenWidth * 0.75;
             } else {
                 canvas.width = width;
                 canvas.height = height;
