@@ -4,12 +4,13 @@ import CanvasRenderer from "../libs/canvas/CanvasRenderer";
 
 export function Canvas({width, height, color, size, eventEmitter}): JSX.Element {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const canvasRenderer = new CanvasRenderer(canvasRef.current);
+    const canvasRendererRef = useRef<CanvasRenderer>(null);
     let isDrawing: boolean = false;
     let lastPosition: Point;
 
     useEffect(() => {
         const canvas = canvasRef.current;
+        canvasRendererRef.current = new CanvasRenderer(canvas);
 
         const resizeCanvas: Function = () => {
             const screenWidth = window.innerWidth;
@@ -25,8 +26,8 @@ export function Canvas({width, height, color, size, eventEmitter}): JSX.Element 
         };
 
         const clearCanvasListener: Function = () => {
-            canvasRenderer.canvas = canvas;
-            canvasRenderer.clear();
+            canvasRendererRef.current.canvas = canvas;
+            canvasRendererRef.current.clear();
         };
 
         resizeCanvas();
@@ -38,7 +39,7 @@ export function Canvas({width, height, color, size, eventEmitter}): JSX.Element 
             window.removeEventListener('resize', resizeCanvas);
             eventEmitter.off("clearCanvas", clearCanvasListener);
         };
-    }, [eventEmitter, canvasRenderer]);
+    }, [eventEmitter]);
 
 
     const startDrawing: Function = (e: MouseEvent): void => {
@@ -50,9 +51,9 @@ export function Canvas({width, height, color, size, eventEmitter}): JSX.Element 
     const draw: Function = (e: MouseEvent): void => {
         if (!isDrawing) return;
 
-        canvasRenderer.canvas = canvasRef.current;
-        const newPosition: Point = getMousePosition(canvasRenderer.canvas, e);
-        canvasRenderer.drawLine(lastPosition, newPosition, color, size, 'round');
+        canvasRendererRef.current.canvas = canvasRef.current;
+        const newPosition: Point = getMousePosition(canvasRendererRef.current.canvas, e);
+        canvasRendererRef.current.drawLine(lastPosition, newPosition, color, size, 'round');
 
         lastPosition = newPosition;
     };
